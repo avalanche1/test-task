@@ -7,6 +7,7 @@ Your task:
   - Remove positioning limitation
   - It is welcome if you can build a simple ui to output the results using 'antd' lib
   - Commit to master as you would on a production project (remember that incremental commits are favoured to huge commits)
+  - You can use whatever means you deem necessary; get creative!
 
 Code quality:
   - Make sure your code is either self-documenting or has extensive documentation
