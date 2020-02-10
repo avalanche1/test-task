@@ -1,0 +1,6 @@
+arrowParens: always
+bracketSpacing: false
+endOfLine: lf
+printWidth: 90
+singleQuote: false
+trailingComma: es5

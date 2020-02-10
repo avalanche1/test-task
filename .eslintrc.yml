@@ -1,0 +1,156 @@
+env:
+  es2020: true
+  browser: true
+extends:
+  - "eslint:recommended"
+  - "plugin:@typescript-eslint/recommended"
+  - "plugin:@typescript-eslint/eslint-recommended"
+  - "plugin:functional/all"
+  - "plugin:jest/recommended"
+  - "plugin:react/recommended"
+  - "plugin:no-unsanitized/DOM"
+  - "prettier"
+  - "prettier/@typescript-eslint"
+parser: "@typescript-eslint/parser"
+parserOptions:
+  #  project: "./tsconfig.json"
+  sourceType: module
+plugins:
+  - "@typescript-eslint/eslint-plugin"
+  - functional
+  - jest
+  - no-unsanitized
+  - promise
+  - react
+  - react-hooks
+overrides:
+  - files:
+      - "*.test.js"
+      - "*.spec.js"
+globals:
+  globalThis: "writable"
+#  devprint: "readonly"
+rules:
+  "@typescript-eslint/camelcase": off
+  "@typescript-eslint/class-name-casing":
+    - off
+  "@typescript-eslint/explicit-function-return-type":
+    - error
+    - allowExpressions: true
+  "@typescript-eslint/interface-name-prefix":
+    - warn
+  "@typescript-eslint/no-empty-interface":
+    - error
+    - "allowSingleExtends": true
+  # todo-4: why this gives error?
+  #  "@typescript-eslint/no-floating-promises": error
+  "@typescript-eslint/no-use-before-define": off
+  arrow-body-style: "off"
+  arrow-parens: warn
+  camelcase: off
+  comma-dangle: "off"
+  func-style:
+    - warn
+    - declaration
+  functional/functional-parameters:
+    - error
+    - enforceParameterCount: false
+  functional/immutable-data:
+    - error
+    - ignorePattern:
+        - globalThis
+  #  todo-3: Turn back on after they've responded to https://github.com/jonaskello/eslint-plugin-functional/issues/91
+  functional/prefer-readonly-type: off
+  functional/no-conditional-statement: off
+  functional/no-expression-statement:
+    - off
+    - ignorePattern:
+        - console
+        - devprint
+        - globalThis
+        - render
+  # Tslint does a good enough job on this; and we dont always return a value from a fn.
+  functional/no-return-void: off
+  id-length:
+    - warn
+    - {min: 3, exceptions: [_, fn, id, is, BG]}
+  id-match:
+    - error
+    - "^[a-zA-Z_0-9]*$"
+    - properties: true
+  indent: off
+  lines-around-comment:
+    - warn
+    - ignorePattern: /prettier-ignore/
+  max-len:
+    - warn
+    - code: 90
+      comments: 120
+      tabWidth: 2
+      #      "^\\} from" part is for multi-line imports
+      ignorePattern: "Spec|import|^\\} from"
+      ignoreUrls: true
+  # todo-team: add custom rule that doesnt include imports: https://github.com/eslint/eslint/issues/12875
+  # https://blog.webiny.com/create-custom-eslint-rules-in-2-minutes-e3d41cb6a9a0
+  # https://github.com/eslint/eslint/blob/219aecb78bc646d44bad27dc775a9b3d3dc58232/tests/lib/rules/max-lines.js
+  max-lines:
+    - warn
+    - max: 50
+      skipBlankLines: true
+  max-params:
+    - warn
+    - 6
+  max-statements:
+    - warn
+    - 10
+  multiline-ternary: "off"
+  new-cap: off
+  no-console: warn
+  no-inline-comments: "off"
+  no-magic-numbers:
+    - error
+    - ignore:
+        - 0
+        - 1
+        - -1
+  no-multi-spaces: "off"
+  no-param-reassign:
+    - error
+    - props: true
+  no-nested-ternary: "off"
+  no-return-await: warn
+  no-shadow:
+    - error
+    - builtinGlobals: true
+      allow:
+        - "name"
+        - "status"
+  no-warning-comments: off
+  no-undef: error
+  no-underscore-dangle:
+    - error
+    - "allow": ["_id", "_text"]
+  no-unneeded-ternary: "off"
+  no-unused-vars: warn
+  no-use-before-define: "off"
+  no-useless-catch: warn
+  object-curly-newline: "off"
+  one-var: off
+  operator-linebreak:
+    - warn
+    - before
+    - overrides:
+        +: ignore
+        =: ignore
+  padding-line-between-statements: "off"
+  prefer-destructuring: warn
+  radix: "off"
+  react/no-string-refs:
+    - error
+    - noTemplateLiterals: true
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn
+  react/display-name: "off"
+  react/prop-types: "off"
+  semi: warn
+settings: {}
